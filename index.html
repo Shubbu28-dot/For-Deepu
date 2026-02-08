@@ -5,149 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Deepu ❤️</title>
     <style>
-        :root {
-            --primary-pink: #ffb7c5;
-            --dark-pink: #ff4d6d;
-            --bg-color: #fff0f3;
-        }
-
         body {
-            margin: 0;
-            padding: 0;
+            background-color: #ffe5ec;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             overflow: hidden;
-            text-align: center;
-        }
-
-        /* Floating Hearts Animation */
-        .heart {
-            position: absolute;
-            color: var(--dark-pink);
-            font-size: 20px;
-            animation: float 5s linear infinite;
-            opacity: 0;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
 
         .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.2);
+            background-color: white;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+            text-align: center;
+            max-width: 350px;
+            width: 90%;
             z-index: 10;
-            max-width: 90%;
-            width: 400px;
             transition: all 0.5s ease;
         }
 
-        h1 { color: var(--dark-pink); font-size: 2rem; margin-bottom: 1rem; }
-        p { color: #555; line-height: 1.6; }
+        h1 { color: #ff4d6d; font-size: 24px; margin: 10px 0; }
+        p { color: #ff758f; font-size: 18px; }
 
-        .cat-img {
-            width: 200px;
-            height: 200px;
-            object-fit: contain;
+        .cat-gif {
+            width: 150px;
+            height: 150px;
+            margin: 5px;
             border-radius: 15px;
-            margin-bottom: 20px;
         }
 
-        .btn-group {
+        .buttons {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 25px;
-            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         button {
-            padding: 12px 30px;
-            font-size: 1rem;
+            padding: 12px 25px;
+            font-size: 16px;
             border: none;
-            border-radius: 50px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
+            transition: 0.3s;
             font-weight: bold;
         }
 
-        .btn-yes { background-color: var(--dark-pink); color: white; }
-        .btn-yes:hover { transform: scale(1.1); background-color: #ff0033; }
+        .yes-btn { background-color: #ff4d6d; color: white; box-shadow: 0 4px #c9184a; }
+        .yes-btn:hover { transform: scale(1.1); }
 
-        .btn-no { background-color: #ccc; color: #555; position: relative; }
+        .no-btn { background-color: #fb6f92; color: white; position: relative; }
+
+        .benefits-list {
+            text-align: left;
+            display: inline-block;
+            margin-top: 15px;
+            color: #555;
+            animation: fadeIn 1s;
+        }
+
+        .benefits-list li { list-style: none; margin: 8px 0; font-size: 15px; font-weight: bold; }
+        .benefits-list li::before { content: "✨ "; color: #ff4d6d; }
 
         .hidden { display: none; }
 
-        /* Benefits List Styling */
-        .benefits-list {
-            text-align: left;
-            margin: 20px auto;
-            display: inline-block;
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .heart {
+            position: absolute;
+            color: #ffb3c1;
+            font-size: 20px;
+            animation: float 4s linear infinite;
         }
 
-        .benefits-list li {
-            list-style: none;
-            margin: 10px 0;
-            font-size: 1.1rem;
-            color: #444;
-            display: flex;
-            align-items: center;
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
         }
-
-        .benefits-list li::before {
-            content: "💖";
-            margin-right: 10px;
-        }
-
-        .message-box { font-size: 1.2rem; font-weight: bold; color: var(--dark-pink); margin-top: 15px; }
     </style>
 </head>
 <body>
 
-    <script>
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 5000);
-        }
-        setInterval(createHeart, 300);
-    </script>
-
-    <div class="container" id="main-card">
-        <div id="proposal-view">
-            <img src="https://media.tenor.com/T0_KIdpS680AAAAi/mochi-mochi-peach-cat-cat.gif" alt="Cute Cat" class="cat-img">
-            <h1>Hey Deepu...</h1>
-            <p>Will you be mine forever? ❤️</p>
-            <div class="btn-group">
-                <button class="btn-yes" onclick="showAccept()">Yes</button>
-                <button class="btn-no" id="no-btn" onclick="handleNo()">No</button>
+    <div class="container" id="card">
+        <div id="proposal-stage">
+            <img src="https://media.tenor.com/T0_KIdpS680AAAAi/mochi-mochi-peach-cat-cat.gif" class="cat-gif">
+            <h1>Hey Deepu... 💖</h1>
+            <p>Will you be mine forever?</p>
+            <div class="buttons">
+                <button class="yes-btn" onclick="accept()">Yes!</button>
+                <button class="no-btn" id="noBtn" onmouseover="moveButton()" onclick="reject()">No</button>
             </div>
         </div>
 
-        <div id="rejected-view" class="hidden">
-            <img src="https://media.tenor.com/Fpx7_7vOogcAAAAi/peach-goma-angry.gif" alt="Angry Cat" class="cat-img">
-            <h1>Deepu! 😤</h1>
-            <p class="message-box">Accept it!</p>
-            <div class="btn-group">
-                <button class="btn-yes" onclick="showAccept()">Okay, Fine! (Yes)</button>
+        <div id="rejected-stage" class="hidden">
+            <img src="https://media.tenor.com/Fpx7_7vOogcAAAAi/peach-goma-angry.gif" class="cat-gif">
+            <h1 style="color: #d00000;">Deepu! 😤</h1>
+            <p>Accept it right now!!</p>
+            <div class="buttons">
+                <button class="yes-btn" onclick="accept()">Okay, I accept! ❤️</button>
             </div>
         </div>
 
-        <div id="accepted-view" class="hidden">
-            <img src="https://media.tenor.com/On799Y5X198AAAAi/peach-goma.gif" alt="Happy Cat" class="cat-img">
-            <h1>Yayyy! I love you! ❤️</h1>
-            <p>Here is what you get for saying yes:</p>
+        <div id="accepted-stage" class="hidden">
+            <div style="display: flex; justify-content: center;">
+                <img src="https://media.tenor.com/On799Y5X198AAAAi/peach-goma.gif" class="cat-gif">
+                <img src="https://media.tenor.com/zM-f6_499_EAAAAi/mochi-peach-cat.gif" class="cat-gif">
+            </div>
+            <h1>Yayyy! I love you! 🥰</h1>
+            <p>Since you said yes, you get:</p>
             <ul class="benefits-list">
                 <li>Apse bohot jyada pyaar karne wala</li>
                 <li>Good mindset</li>
@@ -160,26 +129,38 @@
     </div>
 
     <script>
-        const proposalView = document.getElementById('proposal-view');
-        const rejectedView = document.getElementById('rejected-view');
-        const acceptedView = document.getElementById('accepted-view');
+        // Floating Hearts Background
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }, 300);
 
-        function handleNo() {
-            proposalView.classList.add('hidden');
-            rejectedView.classList.remove('hidden');
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.position = 'absolute';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
         }
 
-        function showAccept() {
-            proposalView.classList.add('hidden');
-            rejectedView.classList.add('hidden');
-            acceptedView.classList.remove('hidden');
-            
-            // Trigger extra hearts for celebration
-            for(let i=0; i<20; i++) {
-                setTimeout(createHeart, i * 100);
-            }
+        function reject() {
+            document.getElementById('proposal-stage').classList.add('hidden');
+            document.getElementById('rejected-stage').classList.remove('hidden');
+        }
+
+        function accept() {
+            document.getElementById('proposal-stage').classList.add('hidden');
+            document.getElementById('rejected-stage').classList.add('hidden');
+            document.getElementById('accepted-stage').classList.remove('hidden');
+            // Change container size for the list
+            document.getElementById('card').style.maxWidth = '450px';
         }
     </script>
 </body>
-              </html>
-              
+</html>
